@@ -6,7 +6,7 @@
         <div class="col">
           <h2 class="page-title">
         
-           <a href="#" class="btn btn-primary d-none d-sm-inline-block m-1" data-bs-toggle="modal" data-bs-target="#modal-profile">
+           <a href="{{ route('hotspot.profile') }}" class="btn btn-primary d-none d-sm-inline-block m-1" data-bs-toggle="modal" data-bs-target="#modal-profile">
               <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
               <circle cx="12" cy="12" r="9"></circle>
@@ -38,15 +38,16 @@
                       <th>Share User</th>
                       <th>parent queue</th>
                       <th>Rite Limit (rx/tx)</th>
+                      <th>Harga</th>
                       
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach ($profile as $no => $data)
+                    @foreach ($profileDetails as $no => $data)
                     <tr>
                         <div hidden>{{ $id = str_replace('*', '', $data['.id']) }}</div>
                         <td>
-                            <a href="{{ route('del', $id) }}">
+                          <a href="{{ route('delprofile', ['id' => $data['id']]) }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                     <line x1="4" y1="7" x2="20" y2="7"></line>
@@ -61,11 +62,12 @@
                         <td class="text-muted">{{ $no+1 }}</td>
                         <td>{{ $data['name'] }}</td>
                         <td>{{ $data['address-pool'] ?? 'none' }}</td>
-                        <td>{{ $data['session-timeout'] }}</td>
+                        <td>{{ $data['validity'] }}</td>
                         <td>{{ $data['status-autorefresh'] }}</td>
                         <td>{{ $data['shared-users'] }}</td>
                         <td>{{ $data['parent-queue'] ?? 'none' }}</td>
                         <td>{{ $data['rate-limit'] }}</td>
+                        <td>{{ $data['price'] ?? 'none' }}</td>
                     </tr>
                 @endforeach
                 
@@ -103,6 +105,6 @@
             </div>
           </div>
     </div>
-    {{-- @dd($server) --}}
 </div>
+
 @endsection

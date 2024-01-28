@@ -1,5 +1,5 @@
 {{-- add user hotspot --}}
-<div class="modal modal-blur fade" id="modal-report" tabindex="-1" role="dialog" aria-hidden="true">
+{{-- <div class="modal modal-blur fade" id="modal-report" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -70,11 +70,11 @@
         </div>
         </form>
     </div>
-</div>
+</div> --}}
 {{-- end --}}
 
 {{-- add user generate --}}
-<div class="modal modal-blur fade" id="modal-users" tabindex="-1" role="dialog" aria-hidden="true">
+{{-- <div class="modal modal-blur fade" id="modal-users" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -183,7 +183,7 @@
         </div>
         </form>
     </div>
-</div>
+</div> --}}
 {{-- end --}}
 <div class="modal modal-blur fade" id="modal-profile" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-sm" role="document">
@@ -196,70 +196,81 @@
                 @csrf
                 <div class="modal-body">
                     <div class="row">
-                        <div class="row">
-                            <div class="col">
-                                <form class="card">
-                                    <div class="card-body">
-                                        <div class="mb-3">
-                                            <label class="form-label ">Name</label>
-                                            <div>
-                                                <input type="text" name="name" id="name"
-                                                    class="form-control">
-                                            </div>
-                                        </div>
-
-
-                                        <div class="mb-3">
-                                            <select name="ppool" id="ppool" class="form-select">
-                                                <option>none</option>
-                                                @foreach ($addressPools as $data)
-                                                    <option value="{{ $data['name'] }}">{{ $data['name'] }}</option>
-                                                @endforeach
-                                            </select>
-                                            <div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">Shared Users</label>
-                                                    <div>
-                                                        <input type="text" name="shared-users" id="shared-users"
-                                                            class="form-control">
-                                                    </div>
-                                                </div>
-
-                                                <div class="mb-3">
-                                                    <label class="form-label">Rate Limit</label>
-                                                    <div>
-                                                        <input type="text" name="rate-limit" id="rate-limit"
-                                                            class="form-control">
-                                                    </div>
-                                                </div>
-
-
-                                                <div class="mb-3">
-                                                    <label class="form-label">Waktu</label>
-                                                    <div>
-                                                        <input type="text" name="session-timeout""
-                                                            id="session-timeout" class="form-control">
-                                                    </div>
-                                                </div>
-
-                                                <select name="parentqq" id="parentqq" class="form-select">
-                                                    <option>none</option>
-                                                    @foreach ($parentq as $data)
-                                                        <option value="{{ $data['name'] }}">{{ $data['name'] }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-
-
-
-                                            </div>
-                                            <div class="card-footer text-end">
-                                                <button type="submit" class="btn btn-primary">Submit</button>
-                                            </div>
-                                </form>
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <label class="form-label">Name</label>
+                                        <input type="text" name="name" id="name" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Lock User</label>
+                                        <select class="form-control form-control-sm" id="lockunlock" name="lockunlock" required="1">
+                                            <option value="{{ old('lockunlock', $getlocku) }}">{{ old('lockunlock', $getlocku) }}</option>
+                                            <option value="Enable">Enable</option>
+                                            <option value="Disable">Disable</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Harga</label>
+                                        <input type="text" name="price" id="price" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Address Pool</label>
+                                        <select name="ppool" id="ppool" class="form-select">
+                                            <option>none</option>
+                                            @foreach ($addressPools as $data)
+                                                <option value="{{ $data['name'] }}">{{ $data['name'] }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Shared Users</label>
+                                        <input type="text" name="sharedusers" id="sharedusers"
+                                            class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Rate Limit</label>
+                                        <input type="text" name="ratelimit" id="ratelimit" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Validity</label>
+                                        <input type="text" name="validity" id="validity" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Grace Period</label>
+                                        <input type="text" name="sprice" id="sprice" class="form-control">
+                                    </div>
+                                    <tr>
+                                        <td class="align-middle">Expired Mode</td><td>
+                                          <select class="form-control form-control-sm" onchange="RequiredV();" id="expmode" name="expmode" required="1">
+                                            <option value="">Select...</option>
+                                            <option value="0">None</option>
+                                            <option value="rem">Remove</option>
+                                            <option value="ntf">Notice</option>
+                                            <option value="remc">Remove & Record</option>
+                                            <option value="ntfc">Notice & Record</option>
+                                          </select>
+                                        </td>
+                                      </tr>
+                                    <div class="mb-3">
+                                        <label class="form-label">Parent Queue</label>
+                                        <select name="parentqq" id="parentqq" class="form-select">
+                                            <option>none</option>
+                                            @foreach ($parentq as $data)
+                                                <option value="{{ $data['name'] }}">{{ $data['name'] }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="card-footer text-end">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
                             </div>
-
                         </div>
+                    </div>
+                </div>
             </form>
+
         </div>
     </div>

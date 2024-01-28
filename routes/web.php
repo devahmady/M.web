@@ -25,6 +25,7 @@ Route::prefix("/")->group(function () {
 Route::prefix("/")->group(function () {
     Route::get('dashboard', [\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
     Route::get('graf/{interfaceName}', [\App\Http\Controllers\DashboardController::class, 'graf'])->name('graf');
+    Route::get('income', [\App\Http\Controllers\DashboardController::class, 'income'])->name('income');
 });
 Route::prefix("/")->group(function () {
     Route::get('hotspot/users', [\App\Http\Controllers\HotspotController::class, 'index'])->name('hotspot.users');
@@ -37,9 +38,11 @@ Route::prefix("/")->group(function () {
     Route::get('hotspot/profile', [\App\Http\Controllers\HotspotController::class, 'profile'])->name('hotspot.profile');
     Route::post('hotspot/profile', [\App\Http\Controllers\HotspotController::class, 'addprofile'])->name('add.profile');
     Route::get('hotspot.traffic', [\App\Http\Controllers\HotspotController::class, 'traffic'])->name('hotspot.traffic');
-    Route::get('hotspot/profile{id}', [\App\Http\Controllers\HotspotController::class, 'del'])->name('del');
+    Route::get('hotspot/profile/{id}', [\App\Http\Controllers\HotspotController::class, 'delprofile'])->name('delprofile');
+    // Route::get('hotspot/profiledetails/{id}', [\App\Http\Controllers\HotspotController::class, 'showProfile'])->name('profiledetails');
 });
 
 Route::prefix("/")->group(function () {
     Route::get('invoice/hotspot', [\App\Http\Controllers\InvoiceController::class, 'index'])->name('invoice.hotspot');
+    Route::post('invoice/hotspot', [\App\Http\Controllers\InvoiceController::class, 'print'])->name('print');
 });

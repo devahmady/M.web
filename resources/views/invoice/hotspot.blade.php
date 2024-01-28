@@ -10,8 +10,8 @@
                             Invoice
                         </h2>
                     </div>
-                    {{-- @dd($server) --}}
-                    <form action="{{ route('invoice.hotspot') }}" method="get" class="d-flex none">
+                    <form action="{{ route('print') }}" method="post" class="d-flex none" id="printForm">
+                        @csrf
                         <div class="col-3 p-1 d-print-none">
                             <select name="name" id="name" class="form-control">
                                 <option value="">Pilih Profile</option>
@@ -23,21 +23,38 @@
                         <div class="col-3 p-1 d-print-none">
                             <select name="comment" id="comment" class="form-control">
                                 <option value="">Pilih Comment</option>
-                                @foreach ($comment as $user)
-                                    <option value="{{ $user['comment'] }}">{{ $user['comment'] }}</option>
+                                @php $displayedComments = []; @endphp
+                                @foreach ($server as $profile)
+                                    @foreach ($comment as $user)
+                                        @if ($user['profile'] == $profile['name'] && !in_array($user['comment'], $displayedComments))
+                                            <option value="{{ $user['comment'] }}" data-profile="{{ $user['profile'] }}">{{ $user['comment'] }}</option>
+                                            @php $displayedComments[] = $user['comment']; @endphp
+                                        @endif
+                                    @endforeach
                                 @endforeach
                             </select>
                         </div>
+                        
                         <div class="col-3 p-1 d-print-none">
-                            <button type="submit" class="btn btn-primary">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <!-- ... (printer icon) ... -->
+                            <button type="submit" class="btn btn-primary" name="print" id="printButton">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path
+                                        d="M17 17h2a2 2 0 0 0 2 -2v-4a2 2 0 0 0 -2 -2h-14a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h2">
+                                    </path>
+                                    <path d="M17 9v-4a2 2 0 0 0 -2 -2h-6a2 2 0 0 0 -2 2v4"></path>
+                                    <path d="M7 13m0 2a2 2 0 0 1 2 -2h6a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-6a2 2 0 0 1 -2 -2z">
+                                    </path>
                                 </svg>
                                 Print
                             </button>
                         </div>
                     </form>
                     
+                    
+
 
                 </div>
             </div>
@@ -48,40 +65,31 @@
             <div class="container-xl">
                 <div class="card card-lg">
                     <div class="card-body">
+                        <div class="col-auto ms-auto d-print-none">
+                          
+                          </div>
                         <div class="row">
-                            <div class="col-6">
-                                <p class="h3">Company</p>
-                                <address>
-                                    Street Address<br>
-                                    State, City<br>
-                                    Region, Postal Code<br>
-                                    ltd@example.com
-                                </address>
-                            </div>
-                            <div class="col-6 text-end">
-                                <p class="h3">Client</p>
-                                <address>
-                                    Street Address<br>
-                                    State, City<br>
-                                    Region, Postal Code<br>
-                                    ctr@example.com
-                                </address>
-                            </div>
-                            <div class="col-12 my-5">
-                                <h1>Invoice INV/001/15</h1>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-5 col-lg-3">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h3 class="card-title">balehotspot <span class="card-subtitle ">Subtitle</span></h3>
-                                    </div>
-                                    <div class="card-body text-center">Username : tes <br>
-                                        password : tes <br>
-                                        masa berlaku : 2h</div>
-                                </div>
-                            </div>
+                            @if ($server && $comment)
+                                <!-- Tampilkan hanya jika ada data yang dipilih -->
+                                @foreach ($server as $profile)
+                                    @foreach ($comment as $user)
+                                        @if ($user['profile'] == $profile['name'])
+                                            <div class="col-md-5 col-lg-3 p-1">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h3 class="card-title">{{ $profile['name'] }} <span
+                                                                class="card-subtitle ">no</span></h3>
+                                                    </div>
+                                                    <div class="card-body text-center">Username : {{ $user['name'] }} <br>
+                                                        Password : {{ $user['password'] }} <br>
+                                                        Masa Berlaku : {{ $user['limit-uptime'] }}</div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                @endforeach
+                            @endif <!-- Akhir kondisional -->
+
 
                             <p class="text-muted text-center mt-5">Thank you very much for doing business with us. We
                                 look

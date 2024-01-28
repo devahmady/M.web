@@ -3,32 +3,25 @@
 @section('header')
     <div class="container-xl">
         <div class="row row-deck row-cards mt-2 ">
-            <div class="col-sm-6 col-lg-3 ">
+            <div class="col-lg-4  ">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
                             <div class="subheader"> <svg xmlns="http://www.w3.org/2000/svg"
-                                    class="icon icon-tabler icon-tabler-cpu-2" width="24" height="24"
+                                    class="icon icon-tabler icon-tabler-rotate-clockwise" width="24" height="24"
                                     viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                                     stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <rect x="1" y="1" width="1000" height="1000"></rect>
-                                    <path d="M8 10v-2h2m6 6v2h-2m-4 0h-2v-2m8 -4v-2h-2"></path>
-                                    <path d="M3 10h2"></path>
-                                    <path d="M3 14h2"></path>
-                                    <path d="M10 3v2"></path>
-                                    <path d="M14 3v2"></path>
-                                    <path d="M21 10h-2"></path>
-                                    <path d="M21 14h-2"></path>
-                                    <path d="M14 21v-2"></path>
-                                    <path d="M10 21v-2"></path>
-                                </svg> RouterBoard</div>
+                                    <path d="M4.05 11a8 8 0 1 1 .5 4m-.5 5v-5h5"></path>
+                                </svg> system date & time</div>
                         </div>
 
+
+
                         <div class=" mb-1">
-                            <span id="cpu">CPU Load : {{ $cpu }} %</span>
-                            <div>Free Memory : {{ \App\Helpers\RouterOs::bytes($memory, 2) }} </div>
-                            <div>Free HDD : {{ \App\Helpers\RouterOs::bytes($memory1, 2) }} </div>
+                            <div>Time & date : {{ $time }} </div>
+                            <span>Uptime : {{ $tim }} </span>
+                            <div>Time Zone : {{ $ntp }} </div>
                         </div>
                         <div class="progress progress-sm">
                             <div class="progress-bar bg-primary" style="width: 100%" role="progressbar" aria-valuenow="75"
@@ -39,7 +32,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-lg-3 ">
+            <div class="col-lg-4  ">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
@@ -67,28 +60,127 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
+
+            <div class="col-lg-4">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
-                            <div class="subheader"> <svg xmlns="http://www.w3.org/2000/svg"
-                                    class="icon icon-tabler icon-tabler-rotate-clockwise" width="24" height="24"
-                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <path d="M4.05 11a8 8 0 1 1 .5 4m-.5 5v-5h5"></path>
-                                </svg> system date & time</div>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-businessplan"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M16 6m-5 0a5 3 0 1 0 10 0a5 3 0 1 0 -10 0" />
+                                <path d="M11 6v4c0 1.657 2.239 3 5 3s5 -1.343 5 -3v-4" />
+                                <path d="M11 10v4c0 1.657 2.239 3 5 3s5 -1.343 5 -3v-4" />
+                                <path d="M11 14v4c0 1.657 2.239 3 5 3s5 -1.343 5 -3v-4" />
+                                <path d="M7 9h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5" />
+                                <path d="M5 15v1m0 -8v1" />
+                                <div class="subheader">Sales</div>
+                            </svg>
+                            <div class="ms-auto lh-1">
+                                <div class="dropdown">
+                                    <a class="dropdown-toggle text-muted" href="#" data-bs-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">Last 7 days</a>
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                        <a class="dropdown-item active" href="#">Last 7 days</a>
+                                        <a class="dropdown-item" href="#">Last 30 days</a>
+                                        <a class="dropdown-item" href="#">Last 3 months</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class=" mb-1">
-                            <div>Time & date : {{ $time }} </div>
-                            <span   >Uptime : {{ $tim }} </span>
-                            <div>Time Zone : {{ $ntp }} </div>
+                        <div class="h1 mb-1">Rp. 20.000.00</div>
+                        <div class="d-flex mb-2">
+                            <div>Income</div>
+
                         </div>
                         <div class="progress progress-sm">
                             <div class="progress-bar bg-primary" style="width: 100%" role="progressbar" aria-valuenow="75"
                                 aria-valuemin="0" aria-valuemax="100" aria-label="75% Complete">
                                 <span class="visually-hidden">75% Complete</span>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{-- <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="subheader"> <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="icon icon-tabler icon-tabler-cpu-2" width="24" height="24"
+                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <rect x="1" y="1" width="1000" height="1000"></rect>
+                                    <path d="M8 10v-2h2m6 6v2h-2m-4 0h-2v-2m8 -4v-2h-2"></path>
+                                    <path d="M3 10h2"></path>
+                                    <path d="M3 14h2"></path>
+                                    <path d="M10 3v2"></path>
+                                    <path d="M14 3v2"></path>
+                                    <path d="M21 10h-2"></path>
+                                    <path d="M21 14h-2"></path>
+                                    <path d="M14 21v-2"></path>
+                                    <path d="M10 21v-2"></path>
+                                </svg> Sysytem & Date</div>
+                        </div>
+                        <div class=" mb-1">
+                            <span class="">CPU Load : 
+
+                                <div class="progress progress-xs">
+                                    <div class="progress-bar bg-primary" style="width: 71.0%"></div>
+                                  </div>
+                            </span>
+                            <div>Free Memory : {{ \App\Helpers\RouterOs::bytes($memory, 2) }} </div>
+                            <div>Free HDD : {{ \App\Helpers\RouterOs::bytes($memory1, 2) }} </div>
+
+                        </div>
+                        <div class="progress progress-sm">
+                            <div class="progress-bar bg-primary" style="width: 100%" role="progressbar" aria-valuenow="75"
+                                aria-valuemin="0" aria-valuemax="100" aria-label="75% Complete">
+                                <span class="visually-hidden">75% Complete</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> --}}
+
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="mb-2">RouterBoard</p>
+                        <div class="progress progress-separated mb-2">
+                            <div class="progress-bar bg-primary" role="progressbar"
+                                style="width: {{ $cpu }}%; ">{{ $cpu }}% - {{ $frequency }} MHz</div>
+                            <div class="progress-bar bg-info" role="progressbar"
+                                style="width: {{ \App\Helpers\RouterOs::bytes3($memory, 2) }}%;">
+                                {{ \App\Helpers\RouterOs::bytes($memory, 2) }}</div>
+                            <div class="progress-bar bg-warning" role="progressbar"
+                                style="width: {{ \App\Helpers\RouterOs::bytes3($hdd, 2) }}%;">
+                                {{ \App\Helpers\RouterOs::bytes($hdd, 2) }}</div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-auto d-flex align-items-center pe-2">
+                                <span class="legend me-2 bg-primary"></span>
+                                <span>Cpu Load</span>
+                                <span
+                                    class="d-none d-md-inline d-lg-none d-xxl-inline ms-2 text-muted">{{ $cpu }}%</span>
+                            </div>
+                            <div class="col-auto d-flex align-items-center px-2">
+                                <span class="legend me-2 bg-info"></span>
+                                <span>Free Memory</span>
+                                <span
+                                    class="d-none d-md-inline d-lg-none d-xxl-inline ms-2 text-muted">{{ \App\Helpers\RouterOs::bytes($memory, 2) }}</span>
+                            </div>
+                            <div class="col-auto d-flex align-items-center px-2">
+                                <span class="legend me-2 bg-warning"></span>
+                                <span>free Hdd</span>
+                                <span
+                                    class="d-none d-md-inline d-lg-none d-xxl-inline ms-2 text-muted">{{ \App\Helpers\RouterOs::bytes($hdd, 2) }}</span>
+                            </div>
+
+
                         </div>
                     </div>
                 </div>
@@ -196,7 +288,7 @@
                         <div class="card-body">
                             <div class="row align-items-center">
                                 <div class="col-auto">
-                                    <a href="{{ route('show.generate') }}"">
+                                    <a href="{{ route('show.generate') }}">
                                         <span
                                             class="bg-dark text-white avatar"><!-- Download SVG icon from http://tabler-icons.io/i/shopping-cart -->
                                             <svg xmlns="http://www.w3.org/2000/svg"
@@ -229,29 +321,16 @@
 
     </div>
     <div class="col-md-7">
-        <div class="card">
+        <div class="card ">
             <div class="card-body">
                 <select name="interface" id="interface" onchange="requestData()">
                     @foreach ($ether1 as $item)
                         <option value="{{ $item['name'] }}">{{ $item['name'] }}</option>
                     @endforeach
                 </select>
-
-                <div class="d-flex">
-                    <div class="ms-auto">
-                        <div class="dropdown">
-                            <select class="dropdown-item text-white" name="otherInterface" id="otherInterface"
-                                onchange="requestData()">
-                                @foreach ($ethertrafik as $data)
-                                    <option value="{{ $data['name'] }}">{{ $data['name'] }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
+                <div id="graph">
                 </div>
             </div>
-            <span id="graph">
-            </span>
         </div>
     </div>
     <input type="hidden" id="nilaiRX" value="{{ \App\Helpers\RouterOs::bytes($rx, 2) }}">
@@ -260,33 +339,43 @@
     <div class="col-md-5">
         <div class="card">
             <div class="card-body">
-                <div class="subheader">Arp</div>
-                <div class="h4 m-0">
+                <div class="h5 m-0">
                     <div class="table-responsive">
-                        <table class="table card-table table-vcenter"
-                            style="  height: 200px;
-                            display: inline-block;
-                            width: 100%;
-                            overflow: auto;">
+                        <table class="table card-table table-vcenter" style="height: 400px; display: inline-block; width: 100%; overflow: auto;">
                             <thead>
                                 <tr>
-                                    <th>No</th>
-                                    <th>Interface</th>
+                                    <th>Time</th>
                                     <th>Address</th>
-                                    <th>Mac-Address</th>
+                                    <th>Message</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($arp as $no => $data)
+                                @foreach ($log as $data)
+                                @php
+                                    $mess = explode(":", $data['message']);
+                                    $time = $data['time'];
+                                @endphp
+                                @if (substr($data['message'], 0, 2) == "->")
                                     <tr>
-                                        <div hidden>{{ $id = str_replace('*', '', $data['.id']) }}</div>
-                                        <td><span class="text-muted">{{ $no + 1 }}</span></td>
-                                        <td>{{ $data['interface'] }}</td>
-                                        <td>{{ $data['address'] }}</td>
-                                        <td>{{ $data['mac-address'] }}</td>
-
+                                        <td>{{ $time }}</td>
+                                        <td>
+                                            @if (count($mess) > 6)
+                                                {{ $mess[1] . ":" . $mess[2] . ":" . $mess[3] . ":" . $mess[4] . ":" . $mess[5] . ":" . $mess[6] }}
+                                            @else
+                                                {{ $mess[1] }}
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if (count($mess) > 6)
+                                                {{ str_replace("trying to", "", $mess[7] . " " . $mess[8] . " " . $mess[9] . " " . $mess[10]) }}
+                                            @else
+                                                {{ str_replace("trying to", "", $mess[2] . " " . $mess[3] . " " . $mess[4] . " " . $mess[5]) }}
+                                            @endif
+                                        </td>
                                     </tr>
-                                @endforeach
+                                @endif
+                            @endforeach
+                            
                             </tbody>
                         </table>
                     </div>
@@ -294,5 +383,6 @@
             </div>
         </div>
     </div>
+    
     </div>
 @endsection

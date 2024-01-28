@@ -1,5 +1,6 @@
 @extends('app.main')
 @section('header')
+
 <div class="page-wrapper">
     <div class="page-body">
       <div class="container-xl">
@@ -24,28 +25,7 @@
                     <th><button class="table-sort" data-sort="sort-progress">Status</button></th>
                   </tr>
                 </thead>
-                <?php 
-                // function formatBytes($bytes, $decimal = null){
-                //   $satuan =['Bytes', 'Kb', 'Mb', 'Gb', 'Tb'];
-                //   $i = 0;
-                //   while ($bytes > 1024 ){
-                //     $bytes /= 1024;
-                //     $i++;
-                //   }
-                //   return round($bytes, $decimal) . $satuan[$i];
-                // } 
-                
-                // function angkaAja($bytes, $decimal = null){
-                //   $satuan =['Bytes', 'Kb', 'Mb', 'Gb', 'Tb'];
-                //   $i = 0;
-                //   while ($bytes > 1024 ){
-                //     $bytes /= 1024;
-                //     $i++;
-                //   }
-                //   return round($bytes, $decimal);
-                // } 
-                
-              ?>   
+               
                 <tbody class="table-tbody">
                     @foreach ($hotspotactive as $no => $data)
                     <tr>
@@ -55,7 +35,7 @@
                         <td> {{ $data['server']}} </td>
                         <td> {{ $data['address']}} </td>
                         <td> {{ $data['mac-address']}} </td>
-                        <td> {{ \App\Helpers\RouterOs::formatUptime($data['uptime'])}} </td>
+                        <td> {{ $data['uptime']}} </td>
                         <td>{{  \App\Helpers\RouterOs::bytes($data['bytes-in'],2)}}</td>       
                         <td>{{  \App\Helpers\RouterOs::bytes($data['bytes-out'],2)}}</td>      
                         <td> 

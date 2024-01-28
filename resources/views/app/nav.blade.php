@@ -87,6 +87,9 @@
                                     <a class="dropdown-item" href=" {{ route('hotspot.active') }} ">
                                         Active
                                     </a>
+                                    <a class="dropdown-item" href=" {{ route('invoice.hotspot') }} ">
+                                        Print
+                                    </a>
                                 </div>
                             </div>
                         </div>

@@ -6,11 +6,43 @@
 <script src="{{ asset('dist') }}/libs/jsvectormap/dist/maps/world-merc.js?1668287865" defer></script>
 <!-- Tabler Core -->
 <script src="{{ asset('dist') }}/js/tabler.min.js?1668287865" defer></script>
+<script src="{{ asset('dist') }}/js/print.js" defer></script>
 <script src="{{ asset('dist') }}/js/demo.min.js?1668287865" defer></script>
 {{-- <script src="https://code.highcharts.com/modules/bullet.js"></script> --}}
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 {{-- <script src="https://code.highcharts.com/highcharts.js"></script> --}}
 <script src="{{ asset('dist') }}/js/highcharts.js" defer></script>
+<!-- Skrip jsPDF dari CDN -->
+<!-- Skrip html2pdf dari CDN -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var printButton = document.getElementById('printButton');
+        var printForm = document.getElementById('printForm');
+        searchButton.addEventListener('click', function() {
+            printForm.action = '{{ route('print') }}'; // Ganti rute sesuai kebutuhan
+            printForm.submit(); // Mengirimkan formulir
+        });
+    });
+    
+</script>
+<script>
+    document.getElementById('name').addEventListener('change', function() {
+        var selectedProfile = this.value;
+        var commentOptions = document.querySelectorAll('#comment option');
+        
+        // Hide all comment options
+        commentOptions.forEach(function(option) {
+            option.style.display = 'none';
+        });
+
+        // Show only comment options related to the selected profile
+        commentOptions.forEach(function(option) {
+            if (option.dataset.profile === selectedProfile || !selectedProfile) {
+                option.style.display = 'block';
+            }
+        });
+    });
+</script>
 <script>
     $(document).ready(function() {
 
@@ -77,8 +109,8 @@
                         name: 'Mikman Traffic RX (' + RXFormatted + ')'
                     }, true, shift);
 
-                    console.log("Trafik data TX (Mbps):", TX);
-                    console.log("Trafik data RX (Mbps):", RX);
+                    // console.log("Trafik data TX (Mbps):", TX);
+                    // console.log("Trafik data RX (Mbps):", RX);
                 }
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) {
@@ -87,7 +119,7 @@
             }
         });
     }
-    
+
     $(document).ready(function() {
         $('#interface').on('change', function() {
             var selectedInterface = $(this).val();
@@ -102,19 +134,11 @@
             },
         });
 
-        var initialData = [{
-            x: (new Date()).getTime(),
-            y: 0
-        }, {
-            x: (new Date()).getTime(),
-            y: 0
-        }];
-
         chart = new Highcharts.Chart({
             chart: {
                 renderTo: 'graph',
                 animation: Highcharts.svg,
-                type: 'line',
+                type: 'spline',
                 events: {
                     load: function() {
                         setInterval(function() {
@@ -124,7 +148,7 @@
                 }
             },
             plotOptions: {
-                line: {
+                spline: {
                     dataLabels: {
                         enabled: true,
                         formatter: function() {
@@ -145,7 +169,8 @@
                 maxPadding: 0.2,
                 type: 'datetime',
                 tickPixelInterval: 150,
-                maxZoom: 20 * 1000
+                maxZoom: 20 * 1000,
+
             },
             yAxis: {
                 minPadding: 0.2,
@@ -168,13 +193,35 @@
             }],
             tooltip: {
                 formatter: function() {
-                    var type = this.series.name.includes('RX') ? 'RX' : 'TX';
+                    var type = this.series.name.includes('RX') ? 'RX' :
+                    'TX'; // Menentukan nilai 'type' berdasarkan nama seri
+                    var formattedValue = convertToReadableFormat(this.y);
                     return '<b>' + type + '</b><br/>Timestamp: ' + Highcharts.dateFormat(
-                        '%Y-%m-%d %H:%M:%S', this.x) + '<br/>' + this.y + ' Mbps';
+                        '%Y-%m-%d %H:%M:%S', this.x) + '<br/>' + formattedValue + ' ' + type;
                 }
             }
 
+
         });
 
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('#submitBtn').click(function(e) {
+            e.preventDefault();
+
+            $(this).hide();
+            $('#loading').removeClass('d-none');
+
+            // Melakukan submit form (Anda dapat menggantinya dengan AJAX jika diperlukan)
+            $('#profileForm').submit();
+
+            // Mengembalikan tombol submit dan menyembunyikan elemen loading setelah 3 detik
+            // setTimeout(function () {
+            //     $('#submitBtn').show();
+            //     $('#loading').addClass('d-none');
+            // }, 1000);
+        });
     });
 </script>

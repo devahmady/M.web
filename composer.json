@@ -6,9 +6,11 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
-        "evilfreelancer/routeros-api-php": "^1.5",
+        "barryvdh/laravel-dompdf": "^2.0",
+        "barryvdh/laravel-snappy": "^1.0",
+        "codedge/laravel-fpdf": "^1.12",
+        "dompdf/dompdf": "^2.0",
         "guzzlehttp/guzzle": "^7.2",
-        "itsgoingd/clockwork": "^5.1",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7"
