@@ -50,13 +50,9 @@
                             </select>
                         </div>
                     </div>
-                   
-                    {{-- @dd($pool) --}}
-
-                   
-                    <div class="col-sm-12 col-md-12">
-                        <div style="padding: 10px;">
-                            <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                    <div class="card text-center">
+                        <div class="row row-cards">
+                            <button type="submit" class="btn btn-primary mt-0">New Secret</button>
                         </div>
                     </div>
                 </div>
@@ -84,6 +80,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @if (count($secret) > 0)
                                 @foreach ($secret as $no => $data)
                                     <tr>
                                         <div hidden>{{ $id = str_replace('*', '', $data['.id']) }}</div>
@@ -109,8 +106,13 @@
                                             </a>
                                         </td>
                                     </tr>
-                                    </tr>
                                 @endforeach
+                            @else
+                                <tr>
+                                    <td colspan="7" class="text-center">Secret not found</td>
+                                </tr>
+                            @endif
+                            
 
                             </tbody>
                         </table>

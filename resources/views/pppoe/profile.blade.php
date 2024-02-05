@@ -15,39 +15,41 @@
                     {{-- @dd($pool) --}}
 
                     <div class="col-sm-2 col-md-2">
-                      <div class="mb-3">
-                          <label class="form-label">Local Address</label>
-                          <input type="text" list="pool_list" class="form-control" id="local" name="local" placeholder="Enter or select" autocomplete="new_name">
-                          <datalist id="pool_list">
-                              <!-- Opsi dari select dropdown -->
-                              @foreach ($pool as $data)
-                                  <option value="{{ $data['name'] }}">{{ $data['name'] }}</option>
-                              @endforeach
-                          </datalist>
-                      </div>
-                  </div>
-                  
-                  <div class="col-sm-2 col-md-2">
-                    <div class="mb-3">
-                        <label class="form-label">Local Address</label>
-                        <input type="text" list="pool_list" class="form-control" id="remote" name="remote" placeholder="Enter or select" autocomplete="new_name">
-                        <datalist id="pool_list">
-                            <!-- Opsi dari select dropdown -->
-                            @foreach ($pool as $data)
-                                <option value="{{ $data['name'] }}">{{ $data['name'] }}</option>
-                            @endforeach
-                        </datalist>
+                        <div class="mb-3">
+                            <label class="form-label">Local Address</label>
+                            <input type="text" list="pool_list" class="form-control" id="local" name="local"
+                                placeholder="Enter or select" autocomplete="new_name">
+                            <datalist id="pool_list">
+                                <!-- Opsi dari select dropdown -->
+                                @foreach ($pool as $data)
+                                    <option value="{{ $data['name'] }}">{{ $data['name'] }}</option>
+                                @endforeach
+                            </datalist>
+                        </div>
                     </div>
-                </div>
+
+                    <div class="col-sm-2 col-md-2">
+                        <div class="mb-3">
+                            <label class="form-label">Local Address</label>
+                            <input type="text" list="pool_list" class="form-control" id="remote" name="remote"
+                                placeholder="Enter or select" autocomplete="new_name">
+                            <datalist id="pool_list">
+                                <!-- Opsi dari select dropdown -->
+                                @foreach ($pool as $data)
+                                    <option value="{{ $data['name'] }}">{{ $data['name'] }}</option>
+                                @endforeach
+                            </datalist>
+                        </div>
+                    </div>
                     <div class="col-sm-2 col-md-2">
                         <div class="mb-3">
                             <label class="form-label">Parent Queue</label>
                             <select name="parentqq" id="parentqq" class="form-select">
-                              <option>none</option>
-                              @foreach ($parent as $data)
-                                  <option value="{{ $data['name'] }}">{{ $data['name'] }}</option>
-                              @endforeach
-                          </select>
+                                <option>none</option>
+                                @foreach ($parent as $data)
+                                    <option value="{{ $data['name'] }}">{{ $data['name'] }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     <div class="col-sm-2 col-md-2">
@@ -86,31 +88,43 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($profile as $no => $data)
+                                @if (count($profile) > 0)
+                                    @foreach ($profile as $no => $data)
+                                        <tr>
+                                            <div hidden>{{ $id = str_replace('*', '', $data['.id']) }}</div>
+                                            <td class="text-muted">{{ $no + 1 }}</td>
+                                            <td>{{ $data['name'] }}</td>
+                                            <td>{{ $data['local-address'] ?? 'none' }}</td>
+                                            <td>{{ $data['remote-address'] }}</td>
+                                            <td>{{ $data['parent-queue'] ?? 'none' }}</td>
+                                            <td>{{ $data['rate-limit'] }}</td>
+                                            <td>
+                                                <a href="{{ route('dellprofile', ['id' => $data['.id']]) }}">
+                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                        class="icon icon-tabler icon-tabler-trash" width="24"
+                                                        height="24" viewBox="0 0 24 24" stroke-width="2"
+                                                        stroke="currentColor" fill="none" stroke-linecap="round"
+                                                        stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                        <line x1="4" y1="7" x2="20" y2="7">
+                                                        </line>
+                                                        <line x1="10" y1="11" x2="10" y2="17">
+                                                        </line>
+                                                        <line x1="14" y1="11" x2="14" y2="17">
+                                                        </line>
+                                                        <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
+                                                        <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
+                                                    </svg>
+                                                </a>
+                                            </td>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @else
                                     <tr>
-                                        <div hidden>{{ $id = str_replace('*', '', $data['.id']) }}</div>
-                                        <td class="text-muted">{{ $no+1 }}</td>
-                                        <td>{{ $data['name'] }}</td>
-                                        <td>{{ $data['local-address'] ?? 'none' }}</td>
-                                        <td>{{ $data['remote-address'] }}</td>
-                                        <td>{{ $data['parent-queue'] ?? 'none' }}</td>
-                                        <td>{{ $data['rate-limit'] }}</td>
-                                       <td>
-                                        <a href="{{ route('dellprofile', ['id' => $data['.id']]) }}">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                <line x1="4" y1="7" x2="20" y2="7"></line>
-                                                <line x1="10" y1="11" x2="10" y2="17"></line>
-                                                <line x1="14" y1="11" x2="14" y2="17"></line>
-                                                <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
-                                                <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
-                                            </svg>
-                                        </a>
-                                       </td>
-                                    </td>
+                                        <td colspan="7" class="text-center">profile not found</td>
                                     </tr>
-                                @endforeach
-
+                                @endif
                             </tbody>
                         </table>
                     </div>

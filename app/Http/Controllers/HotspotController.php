@@ -20,23 +20,16 @@ class HotspotController extends Controller
         if ($API->connect($ip, $user, $password)) {
 
             $hotspotuser = $API->comm('/ip/hotspot/user/print');
+            $filteruser = array_filter($hotspotuser, function ($data) {
+                return $data['name'] !== 'default-trial' && $data['name'] !== 'default-encryption';
+              });
             $server = $API->comm('/ip/hotspot/print');
             $profile = $API->comm('/ip/hotspot/user/profile/print');
             $json = json_encode($hotspotuser);
-            $hotspotusers = collect($hotspotuser);
-            $perPage = 15;
-            $currentPage = request()->get('page') ?: 1;
-            $pagination = new LengthAwarePaginator(
-                $hotspotusers->forPage($currentPage, $perPage),
-                $hotspotusers->count(),
-                $perPage,
-                $currentPage,
-                ['path' => route('hotspot.users')] // Adjust the route name accordingly
-            );
             
             $data = [
                 'totalhotspotuser' => count($hotspotuser),
-                'hotspotuser' => $pagination,
+                'hotspotuser' => $filteruser,
                 'server' => $server,
                 'profile' => $profile,
             ];
@@ -55,7 +48,7 @@ class HotspotController extends Controller
         $API->debug = false;
 
         if ($API->connect($ip, $user, $password)) {
-            $usermode = ($request->input('name') == $request->input('password')) ? 'vc-' : 'up-';
+            $usermode = ($request->input('name') == $request->input('password')) ? 'voucher-' : 'member-';
             $timelimit = $request->input('timelimit', '0');
             $comment = $usermode . $request->input('comment');
             $API->comm('/ip/hotspot/user/add', [
@@ -81,7 +74,7 @@ class HotspotController extends Controller
         $API->debug = false;
         $pilihanKarakter = $request->input('pilihan_karakter', 1); // Default ke 1 jika tidak ada nilai yang diterima
         if ($API->connect($ip, $user, $password)) {
-            $usermode = ($request->input('name') == $request->input('password')) ? 'vc-' : 'up-';
+            $usermode = ($request->input('name') == $request->input('password')) ? 'voucher-' : 'member-';
             $comment = $usermode . $request->input('comment');
             $jumlah =  $request->jumlah;
             $karakter = $request->karakter;
@@ -171,6 +164,7 @@ class HotspotController extends Controller
         $API->debug = false;
         if ($API->connect($ip, $user, $password)) {
             $profile = $API->comm('/ip/hotspot/user/profile/print');
+            
             $profileDetails = [];
             foreach ($profile as $prof) {
                 $data = $prof['name'];

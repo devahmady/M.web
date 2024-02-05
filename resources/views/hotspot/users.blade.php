@@ -130,10 +130,6 @@
                         @endforeach
                     </tbody>
                 </table>
-                <div class="card-footer d-flex align-items-center">
-                    {{ $hotspotuser->links() }}
-                </div>
-
             </div>
         </div>
     </div>
