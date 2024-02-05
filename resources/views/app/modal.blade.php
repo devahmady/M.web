@@ -203,18 +203,8 @@
                                         <label class="form-label">Name</label>
                                         <input type="text" name="name" id="name" class="form-control">
                                     </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Lock User</label>
-                                        <select class="form-control form-control-sm" id="lockunlock" name="lockunlock" required="1">
-                                            <option value="{{ old('lockunlock', $getlocku) }}">{{ old('lockunlock', $getlocku) }}</option>
-                                            <option value="Enable">Enable</option>
-                                            <option value="Disable">Disable</option>
-                                        </select>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Harga</label>
-                                        <input type="text" name="price" id="price" class="form-control">
-                                    </div>
+
+                                   
                                     <div class="mb-3">
                                         <label class="form-label">Address Pool</label>
                                         <select name="ppool" id="ppool" class="form-select">
@@ -226,33 +216,14 @@
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Shared Users</label>
-                                        <input type="text" name="sharedusers" id="sharedusers"
-                                            class="form-control">
+                                        <input type="text" name="sharedusers" id="sharedusers" class="form-control">
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Rate Limit</label>
                                         <input type="text" name="ratelimit" id="ratelimit" class="form-control">
                                     </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Validity</label>
-                                        <input type="text" name="validity" id="validity" class="form-control">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Grace Period</label>
-                                        <input type="text" name="sprice" id="sprice" class="form-control">
-                                    </div>
-                                    <tr>
-                                        <td class="align-middle">Expired Mode</td><td>
-                                          <select class="form-control form-control-sm" onchange="RequiredV();" id="expmode" name="expmode" required="1">
-                                            <option value="">Select...</option>
-                                            <option value="0">None</option>
-                                            <option value="rem">Remove</option>
-                                            <option value="ntf">Notice</option>
-                                            <option value="remc">Remove & Record</option>
-                                            <option value="ntfc">Notice & Record</option>
-                                          </select>
-                                        </td>
-                                      </tr>
+
+                                   
                                     <div class="mb-3">
                                         <label class="form-label">Parent Queue</label>
                                         <select name="parentqq" id="parentqq" class="form-select">

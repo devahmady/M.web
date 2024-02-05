@@ -58,7 +58,16 @@
                                 </select>
                             </div>
                         </div>
-
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label class="form-label">Jenis Karakter</label>
+                                <select class="form-select" name="pilihan_karakter" id="pilihan_karakter">
+                                    <option value="1">Angka saja</option>
+                                    <option value="2">Huruf besar dan kecil</option>
+                                    <option value="3">Huruf besar, huruf kecil, dan angka</option>
+                                </select>
+                            </div>
+                        </div>
                         <div class="col-6">
                             <div class="mb-3">
                                 <label class="form-label">Server</label>

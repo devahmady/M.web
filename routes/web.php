@@ -2,19 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
     return view('login.login');
 });
@@ -39,9 +26,20 @@ Route::prefix("/")->group(function () {
     Route::post('hotspot/profile', [\App\Http\Controllers\HotspotController::class, 'addprofile'])->name('add.profile');
     Route::get('hotspot.traffic', [\App\Http\Controllers\HotspotController::class, 'traffic'])->name('hotspot.traffic');
     Route::get('hotspot/profile/{id}', [\App\Http\Controllers\HotspotController::class, 'delprofile'])->name('delprofile');
-    // Route::get('hotspot/profiledetails/{id}', [\App\Http\Controllers\HotspotController::class, 'showProfile'])->name('profiledetails');
 });
-
+Route::prefix("/")->group(function () {
+    Route::get('pppoe/addserver', [\App\Http\Controllers\PPPoEController::class, 'show'])->name('pppoe.server');
+    Route::post('pppoe/addserver', [\App\Http\Controllers\PPPoEController::class, 'addserver'])->name('add.server');
+    Route::get('pppoe/dellserver/{id}', [\App\Http\Controllers\PPPoEController::class, 'delserver'])->name('delserver');
+    Route::get('pppoe/profile', [\App\Http\Controllers\PPPoEController::class, 'profile'])->name('pppoe.profile');
+    Route::post('pppoe/profile', [\App\Http\Controllers\PPPoEController::class, 'addprofile'])->name('add.profile.pppoe');
+    Route::get('pppoe/dellprofile/{id}', [\App\Http\Controllers\PPPoEController::class, 'dellprofile'])->name('dellprofile');
+    Route::get('pppoe/secret', [\App\Http\Controllers\PPPoEController::class, 'secret'])->name('secret.pppoe');
+    Route::post('pppoe/secret', [\App\Http\Controllers\PPPoEController::class, 'addsecret'])->name('add.secret');
+    Route::get('pppoe/dellsecret/{id}', [\App\Http\Controllers\PPPoEController::class, 'dellsecret'])->name('dellsecret');
+    Route::get('pppoe/active', [\App\Http\Controllers\PPPoEController::class, 'active'])->name('active.pppoe');
+   
+});
 Route::prefix("/")->group(function () {
     Route::get('invoice/hotspot', [\App\Http\Controllers\InvoiceController::class, 'index'])->name('invoice.hotspot');
     Route::post('invoice/hotspot', [\App\Http\Controllers\InvoiceController::class, 'print'])->name('print');

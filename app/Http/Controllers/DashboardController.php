@@ -10,18 +10,12 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        // data router yang di kirim
         $ip = session()->get('ip');
         $user = session()->get('user');
         $pass = session()->get('password');
-        // connet mikrotik api 
         $API = new MikrotikApi();
-        // debugging prosses 
         $API->debug('false');
-        // membuat logik login user mikrotik 
         if ($API->connect($ip, $user, $pass)) {
-
-            // mengambil data dari api mikrotik 
             $identitas = $API->comm('/system/identity/print');
             $routermodel = $API->comm('/system/routerboard/print');
             $versi = $API->comm('/system/resource/print');
@@ -48,36 +42,15 @@ class DashboardController extends Controller
                 'interface' => 'ether1',
                 'once' => '',
             ));
-
             $getlog = $API->comm("/log/print", array(
                 "?topics" => "hotspot,info,debug"
             ));
-
-            // Send the query and get response
-            // Reverse the array to have latest logs first
             $logs = array_reverse($getlog);
-
-            // Count total logs
-            $totalLogs = count($getlog);
-
-
             $rx = $monitoring[0]['rx-bits-per-second'];
             $tx = $monitoring[0]['tx-bits-per-second'];
         } else {
             return 'koneksi gagal';
         }
-
-        foreach ($logs as $log) {
-            $message = $log['message'];
-            $pattern = '/(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})/';
-            preg_match($pattern, $message, $matches);
-
-            if (isset($matches[0])) {
-                $ipAddresses[] = $matches[0];
-            }
-        }
-
-        // simpan parameter ke dalam pariabael data 
         $data = [
             'rx' => $monitoring[0]['rx-bits-per-second'],
             'ether1' => $ether1,
@@ -104,7 +77,7 @@ class DashboardController extends Controller
             "log" => $logs,
             "ipAddresses" => $ipAddresses,
         ];
-        // dd($data);
+        // dd($pppactive);
         return view('dashboard', $data);
     }
 
@@ -113,14 +86,9 @@ class DashboardController extends Controller
         $ip = session()->get('ip');
         $user = session()->get('user');
         $pass = session()->get('password');
-        // connet mikrotik api 
         $API = new MikrotikApi();
-        // debugging prosses 
         $API->debug('false');
-
-        // membuat logik login user mikrotik 
         if ($API->connect($ip, $user, $pass)) {
-            // $ether1 =$API->comm("/interface/print");
             $monitoring = $API->comm('/interface/monitor-traffic', array(
                 'interface' => $interfaceName,
                 'once' => '',
@@ -128,11 +96,8 @@ class DashboardController extends Controller
         }
         $rows = array();
         $rows2 = array();
-
         $rx = $monitoring[0]['rx-bits-per-second'];
         $tx = $monitoring[0]['tx-bits-per-second'];
-
-
         $rows['name'] = 'Tx';
         $rows['data'][] = $tx;
         $rows2['name'] = 'Rx';
@@ -146,48 +111,7 @@ class DashboardController extends Controller
         array_push($result, $rows2);
 
         return $result;
-
-        // dd($interface);
     }
-
-    // public function income()
-    // {
-    //     $ip = session()->get('ip');
-    //     $user = session()->get('user');
-    //     $password = session()->get('password');
-    //     $API = new MikrotikApi();
-    //     $API->debug = false;
-
-    //     if ($API->connect($ip, $user, $password)) {
-    //         // Ambil daftar user hotspot aktif
-    //         $activeUsers = $API->comm('/ip/hotspot/active/print');
-
-    //         // Loop through each active user
-    //         foreach ($activeUsers as $user) {
-    //             // Ambil detail user
-    //             $userDetail = $API->comm("/ip/hotspot/user/print", array("?name" => $user['user']));
-
-    //             // Pastikan user detail ditemukan
-    //             if (!empty($userDetail)) {
-    //                 $profileName = $userDetail[0]['profile'];
-
-    //                 // Ambil harga profil hotspot
-    //                 $profileDetail = $API->comm("/ip/hotspot/user/profile/print", array("?name" => $profileName));
-    //                 if (!empty($profileDetail)) {
-    //                     $price = (int)$profileDetail[0]['price']; // Harga profil hotspot
-    //                     $totalIncome += $price; // Tambahkan harga ke total income
-    //                 }
-    //             }
-    //         }
-
-    //         // Tutup koneksi ke MikroTik API
-    //         $API->disconnect();
-    //     }   
-    //     dd($totalIncome);
-    //     // Return total income
-    //     return view('dashboard', $totalIncome);
-
-    // }
 
 
 }

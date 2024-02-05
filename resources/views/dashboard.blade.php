@@ -2,8 +2,8 @@
 @extends('app.main')
 @section('header')
     <div class="container-xl">
-        <div class="row row-deck row-cards mt-2 ">
-            <div class="col-lg-4  ">
+        <div class="row row-deck row-cards mt-1 ">
+            <div class="col-lg">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
@@ -32,7 +32,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4  ">
+            <div class="col-lg">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
@@ -61,97 +61,14 @@
                 </div>
             </div>
 
-            <div class="col-lg-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-businessplan"
-                                width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M16 6m-5 0a5 3 0 1 0 10 0a5 3 0 1 0 -10 0" />
-                                <path d="M11 6v4c0 1.657 2.239 3 5 3s5 -1.343 5 -3v-4" />
-                                <path d="M11 10v4c0 1.657 2.239 3 5 3s5 -1.343 5 -3v-4" />
-                                <path d="M11 14v4c0 1.657 2.239 3 5 3s5 -1.343 5 -3v-4" />
-                                <path d="M7 9h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5" />
-                                <path d="M5 15v1m0 -8v1" />
-                                <div class="subheader">Sales</div>
-                            </svg>
-                            <div class="ms-auto lh-1">
-                                <div class="dropdown">
-                                    <a class="dropdown-toggle text-muted" href="#" data-bs-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">Last 7 days</a>
-                                    <div class="dropdown-menu dropdown-menu-end">
-                                        <a class="dropdown-item active" href="#">Last 7 days</a>
-                                        <a class="dropdown-item" href="#">Last 30 days</a>
-                                        <a class="dropdown-item" href="#">Last 3 months</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="h1 mb-1">Rp. 20.000.00</div>
-                        <div class="d-flex mb-2">
-                            <div>Income</div>
 
-                        </div>
-                        <div class="progress progress-sm">
-                            <div class="progress-bar bg-primary" style="width: 100%" role="progressbar" aria-valuenow="75"
-                                aria-valuemin="0" aria-valuemax="100" aria-label="75% Complete">
-                                <span class="visually-hidden">75% Complete</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{-- <div class="col">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <div class="subheader"> <svg xmlns="http://www.w3.org/2000/svg"
-                                    class="icon icon-tabler icon-tabler-cpu-2" width="24" height="24"
-                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <rect x="1" y="1" width="1000" height="1000"></rect>
-                                    <path d="M8 10v-2h2m6 6v2h-2m-4 0h-2v-2m8 -4v-2h-2"></path>
-                                    <path d="M3 10h2"></path>
-                                    <path d="M3 14h2"></path>
-                                    <path d="M10 3v2"></path>
-                                    <path d="M14 3v2"></path>
-                                    <path d="M21 10h-2"></path>
-                                    <path d="M21 14h-2"></path>
-                                    <path d="M14 21v-2"></path>
-                                    <path d="M10 21v-2"></path>
-                                </svg> Sysytem & Date</div>
-                        </div>
-                        <div class=" mb-1">
-                            <span class="">CPU Load : 
-
-                                <div class="progress progress-xs">
-                                    <div class="progress-bar bg-primary" style="width: 71.0%"></div>
-                                  </div>
-                            </span>
-                            <div>Free Memory : {{ \App\Helpers\RouterOs::bytes($memory, 2) }} </div>
-                            <div>Free HDD : {{ \App\Helpers\RouterOs::bytes($memory1, 2) }} </div>
-
-                        </div>
-                        <div class="progress progress-sm">
-                            <div class="progress-bar bg-primary" style="width: 100%" role="progressbar" aria-valuenow="75"
-                                aria-valuemin="0" aria-valuemax="100" aria-label="75% Complete">
-                                <span class="visually-hidden">75% Complete</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
-
-            <div class="col-12">
+            <div class="col-12 mt-1">
                 <div class="card">
                     <div class="card-body">
                         <p class="mb-2">RouterBoard</p>
                         <div class="progress progress-separated mb-2">
-                            <div class="progress-bar bg-primary" role="progressbar"
-                                style="width: {{ $cpu }}%; ">{{ $cpu }}% - {{ $frequency }} MHz</div>
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: {{ $cpu }}%; ">
+                                {{ $cpu }}% - {{ $frequency }} MHz</div>
                             <div class="progress-bar bg-info" role="progressbar"
                                 style="width: {{ \App\Helpers\RouterOs::bytes3($memory, 2) }}%;">
                                 {{ \App\Helpers\RouterOs::bytes($memory, 2) }}</div>
@@ -186,9 +103,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 mt-2">
+        <div class="col-12 mt-1">
             <div class="row row-cards">
-
                 <div class="col-sm-6 col-lg-3">
                     <div class="card card-sm">
                         <div class="card-body">
@@ -251,7 +167,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="col-sm-6 col-lg-3">
                     <div class="card card-sm">
                         <div class="card-body">
@@ -318,9 +233,83 @@
                 </div>
             </div>
         </div>
-
     </div>
-    <div class="col-md-7">
+    <div class="col-12 mt-1">
+        <div class="row row-cards">
+            <div class="col-sm-6 col-lg-6">
+                <div class="card card-sm ">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-auto">
+                                <span
+                                    class="bg-twitter text-white avatar"><!-- Download SVG icon from http://tabler-icons.io/i/brand-facebook -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-network"
+                                        width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                                        stroke="currentColor" fill="none" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M6 9a6 6 0 1 0 12 0a6 6 0 0 0 -12 0" />
+                                        <path d="M12 3c1.333 .333 2 2.333 2 6s-.667 5.667 -2 6" />
+                                        <path d="M12 3c-1.333 .333 -2 2.333 -2 6s.667 5.667 2 6" />
+                                        <path d="M6 9h12" />
+                                        <path d="M3 20h7" />
+                                        <path d="M14 20h7" />
+                                        <path d="M10 20a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+                                        <path d="M12 15v3" />
+                                    </svg>
+                                </span>
+                            </div>
+                            <div class="col">
+                                <div class="font-weight-medium" id="hsuser">
+                                    {{ $ppp_active }}
+                                </div>
+                                <div class="text-muted">
+                                    PPPoE Aktive
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-6">
+                <div class="card card-sm ">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-auto">
+                                <span
+                                    class="bg-twitter text-white avatar"><!-- Download SVG icon from http://tabler-icons.io/i/brand-facebook -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-network"
+                                        width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                                        stroke="currentColor" fill="none" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M6 9a6 6 0 1 0 12 0a6 6 0 0 0 -12 0" />
+                                        <path d="M12 3c1.333 .333 2 2.333 2 6s-.667 5.667 -2 6" />
+                                        <path d="M12 3c-1.333 .333 -2 2.333 -2 6s.667 5.667 2 6" />
+                                        <path d="M6 9h12" />
+                                        <path d="M3 20h7" />
+                                        <path d="M14 20h7" />
+                                        <path d="M10 20a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+                                        <path d="M12 15v3" />
+                                    </svg>
+                                </span>
+                            </div>
+                            <div class="col">
+                                <div class="font-weight-medium" id="hsuser">
+                                    {{ $ppp_user }}
+                                </div>
+                                <div class="text-muted">
+                                    Users PPPoE
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+    <div class="col-md-7 mt-1">
         <div class="card ">
             <div class="card-body">
                 <select name="interface" id="interface" onchange="requestData()">
@@ -336,46 +325,40 @@
     <input type="hidden" id="nilaiRX" value="{{ \App\Helpers\RouterOs::bytes($rx, 2) }}">
     <input type="hidden" id="nilaiTX" value="{{ \App\Helpers\RouterOs::bytes($tx, 2) }}">
 
-    <div class="col-md-5">
-        <div class="card">
-            <div class="card-body">
-                <div class="h5 m-0">
+    <div class="col-md-5 mt-1">
+        <div class="card " style="height: 29rem">
+            <div class="card-body card-body-scrollable card-body-scrollable-shadow">
+                <div class="h5">
                     <div class="table-responsive">
-                        <table class="table card-table table-vcenter" style="height: 400px; display: inline-block; width: 100%; overflow: auto;">
+                        <table class="table card-table table-vcenter" style="width: 600px;">
+
                             <thead>
                                 <tr>
                                     <th>Time</th>
-                                    <th>Address</th>
-                                    <th>Message</th>
+                                    <th>Info</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($log as $data)
-                                @php
-                                    $mess = explode(":", $data['message']);
-                                    $time = $data['time'];
-                                @endphp
-                                @if (substr($data['message'], 0, 2) == "->")
-                                    <tr>
-                                        <td>{{ $time }}</td>
-                                        <td>
-                                            @if (count($mess) > 6)
-                                                {{ $mess[1] . ":" . $mess[2] . ":" . $mess[3] . ":" . $mess[4] . ":" . $mess[5] . ":" . $mess[6] }}
-                                            @else
-                                                {{ $mess[1] }}
-                                            @endif
-                                        </td>
-                                        <td>
-                                            @if (count($mess) > 6)
-                                                {{ str_replace("trying to", "", $mess[7] . " " . $mess[8] . " " . $mess[9] . " " . $mess[10]) }}
-                                            @else
-                                                {{ str_replace("trying to", "", $mess[2] . " " . $mess[3] . " " . $mess[4] . " " . $mess[5]) }}
-                                            @endif
-                                        </td>
-                                    </tr>
-                                @endif
-                            @endforeach
-                            
+                                    @php
+                                        $time = $data['time'];
+                                        $message = $data['message'];
+                                        $ipAddress = '';
+                                        preg_match('/^a \((\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\):/', $message, $matches);
+                                        if (!empty($matches)) {
+                                            $ipAddress = $matches[1];
+                                        }
+                                    @endphp
+
+                                    @if (!empty($ipAddress))
+                                        <tr>
+                                            <td>{{ $time }}</td>
+                                            <td>{{ $message }}</td>
+                                        </tr>
+                                    @endif
+                                @endforeach
+
+
                             </tbody>
                         </table>
                     </div>
@@ -383,6 +366,6 @@
             </div>
         </div>
     </div>
-    
+
     </div>
 @endsection

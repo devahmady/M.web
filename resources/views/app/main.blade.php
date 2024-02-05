@@ -7,12 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title> {{ $title }} </title>
     <!-- CSS files -->
-    <link href="{{ asset('dist')}}/css/tabler.min.css?1668287865" rel="stylesheet"/>
-    <link href="{{ asset('dist')}}/css/tabler-flags.min.css?1668287865" rel="stylesheet"/>
-    <link href="{{ asset('dist')}}/css/tabler-payments.min.css?1668287865" rel="stylesheet"/>
-    <link href="{{ asset('dist')}}/css/tabler-vendors.min.css?1668287865" rel="stylesheet"/>
-    <link href="{{ asset('dist')}}/css/demo.min.css?1668287865" rel="stylesheet"/>
-    <link rel="stylesheet" href="https://printjs-4de6.kxcdn.com/print.min.css">
+    <link href="{{ asset('mikman')}}/css/tabler.min.css?1668287865" rel="stylesheet"/>
     
 
 <style>

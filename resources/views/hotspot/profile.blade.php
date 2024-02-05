@@ -33,12 +33,10 @@
                       <th>No</th>
                       <th>Name</th>
                       <th>Address Pool</th>
-                      <th>Validate</th>
                       <th>Refres </th>
                       <th>Share User</th>
                       <th>parent queue</th>
                       <th>Rite Limit (rx/tx)</th>
-                      <th>Harga</th>
                       
                     </tr>
                   </thead>
@@ -62,12 +60,10 @@
                         <td class="text-muted">{{ $no+1 }}</td>
                         <td>{{ $data['name'] }}</td>
                         <td>{{ $data['address-pool'] ?? 'none' }}</td>
-                        <td>{{ $data['validity'] }}</td>
                         <td>{{ $data['status-autorefresh'] }}</td>
                         <td>{{ $data['shared-users'] }}</td>
                         <td>{{ $data['parent-queue'] ?? 'none' }}</td>
                         <td>{{ $data['rate-limit'] }}</td>
-                        <td>{{ $data['price'] ?? 'none' }}</td>
                     </tr>
                 @endforeach
                 
