@@ -33,7 +33,7 @@
             <pre>pkg install curl</pre>
             <pre>chmod +x run-mikman</pre>
             <pre>./run-mikman</pre>
-            <p>Buka browser dan akses http://0.0.0.0: untuk melihat aplikasi MikMan.</p>
+            <p>Buka browser dan akses http://0.0.0.0:8080 untuk melihat aplikasi MikMan.</p>
         </ol>
        <h2>Kesimpulan:</h2>
         <p>Integrasi API MikroTik kami dengan Laravel memberdayakan Anda untuk mengelola dan memonitor infrastruktur jaringan dengan efisien.</p>
