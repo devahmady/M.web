@@ -8,25 +8,24 @@
                     <div class="card-body">
                         <h3 class="card-title">Add Server</h3>
                         <div class="row row-cards">
-                            <div class="col-sm-6 col-md-4">
+                            <div class="col-sm-6 col-md-6">
                                 <div class="mb-3">
-                                    <label class="form-label">Serive Name</label>
-                                    <input type="text" class="form-control" id="service" name="service">
+                                    <input type="text" class="form-control" id="service" name="service" placeholder="service name">
                                 </div>
                             </div>
-                            <div class="col-md-5">
+                            <div class="col-sm-6 col-md-6">
                                 <div class="mb-3">
-                                    <label class="form-label">Interface</label>
-                                    <select class="form-control form-select" id="name" name="name">
+                                    <select class="form-control form-select" id="name" name="name" >
+                                        <option>----- Interface -----</option>
                                         @foreach ($interface as $data)
                                             <option value="{{ $data['name'] }}">{{ $data['name'] }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-md-3">
-                                <div style="padding: 10px;">
-                                    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                            <div class="card text-center">
+                                <div class="row row-cards">
+                                    <button type="submit" class="btn btn-primary mt-0">New Secret</button>
                                 </div>
                             </div>
                         </div>

@@ -1,32 +1,6 @@
 <script src="{{ asset('mikman') }}/js/tabler.min.js?1668287865" defer></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="{{ asset('mikman') }}/js/highcharts.js" defer></script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var printButton = document.getElementById('printButton');
-        var printForm = document.getElementById('printForm');
-        searchButton.addEventListener('click', function() {
-            printForm.action = '{{ route('print') }}'; // Ganti rute sesuai kebutuhan
-            printForm.submit(); // Mengirimkan formulir
-        });
-    });
-    
-</script>
-<script>
-    document.getElementById('name').addEventListener('change', function() {
-        var selectedProfile = this.value;
-        var commentOptions = document.querySelectorAll('#comment option');
-        commentOptions.forEach(function(option) {
-            option.style.display = 'none';
-        });
-        commentOptions.forEach(function(option) {
-            if (option.dataset.profile === selectedProfile || !selectedProfile) {
-                option.style.display = 'block';
-            }
-        });
-    });
-</script>
 <script>
 
     function convertToReadableFormat(bytes) {
@@ -155,22 +129,4 @@
 
     });
 </script>
-<script>
-    $(document).ready(function() {
-        $('#submitBtn').click(function(e) {
-            e.preventDefault();
-            $(this).hide();
-            $('#loading').removeClass('d-none');
-            $('#profileForm').submit();
-        });
-    });
 
-    $(document).ready(function() {
-        $('#submitBtnLogin').click(function(e) {
-            e.preventDefault();
-            $(this).hide();
-            $('#loadinglogin').removeClass('d-none');
-            $('#loginForm').submit();
-        });
-    });
-</script>

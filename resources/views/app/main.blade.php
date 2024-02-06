@@ -33,7 +33,6 @@
      @include('app.foot')
       </div>
     </div>
-   @include('app.modal')
     @include('app.script')
   </body>
 </html>

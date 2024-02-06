@@ -8,7 +8,7 @@
     <title>Login</title>
     <!-- CSS files -->
     <link href="{{ asset('mikman') }}/css/tabler.min.css?1668287865" rel="stylesheet" />
-   
+
     <style>
         @import url('https://rsms.me/inter/inter.css');
 
@@ -44,7 +44,8 @@
                                 </span>
                             </div>
                             <input type="text" class="form-control" aria-label="Small"
-                                aria-describedby="inputGroup-sizing-sm" name="ip" placeholder="IP Router" required>
+                                aria-describedby="inputGroup-sizing-sm" name="ip" placeholder="IP Router" required
+                                autofocus>
                         </div>
                         <div class="input-group input-group-sm mb-3">
                             <div class="input-group-prepend">
@@ -61,7 +62,8 @@
                                 </span>
                             </div>
                             <input type="text" class="form-control" aria-label="Small"
-                                aria-describedby="inputGroup-sizing-sm" name="user" placeholder="Username">
+                                aria-describedby="inputGroup-sizing-sm" name="user" placeholder="Username" required
+                                autofocus>
                         </div>
                         <div class="input-group input-group-sm mb-3">
                             <div class="input-group-prepend">
@@ -77,24 +79,20 @@
                                     </svg>
                                 </span>
                             </div>
-                            <input type="text" class="form-control" aria-label="Small"
-                                aria-describedby="inputGroup-sizing-sm" name="password" placeholder="Password">
+                            <input type="password" class="form-control" aria-label="Small"
+                                aria-describedby="inputGroup-sizing-sm" name="password" placeholder="Password"
+                                autofocus required>
                         </div>
                         <div class="form-footer">
                             <button type="submit" id="submitBtnLogin" class="btn btn-primary w-100">Login</button>
-                            <div id="loadinglogin" class="d-none text-center mt-3">
-                                <div class="spinner-border text-primary" role="status">
-                                    <span class="visually-hidden">Loading...</span>
-                                </div>
-                                <p class="text-primary mt-2">Menambahkan...</p>
-                            </div>
                         </div>
                     </form>
                 </div>
                 <div class="hr-text">Want to give me a Gift?</div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col"><a href="#" class="btn w-100">
+                        <div class="col">
+                            <a href="https://saweria.co/mikman2024" class="btn w-100">
                                 <!-- Download SVG icon from http://tabler-icons.io/i/brand-github -->
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-gift"
                                     width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
@@ -108,8 +106,10 @@
                                         d="M7.5 8a2.5 2.5 0 0 1 0 -5a4.8 8 0 0 1 4.5 5a4.8 8 0 0 1 4.5 -5a2.5 2.5 0 0 1 0 5">
                                     </path>
                                 </svg>
-                                Donat
-                            </a></div>
+                                saweria.co/mikman2024
+                            </a>
+                        </div>
+
                     </div>
                 </div>
             </div>

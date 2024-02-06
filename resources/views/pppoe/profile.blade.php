@@ -8,17 +8,15 @@
                 <div class="row row-cards">
                     <div class="col-sm-2 col-md-2">
                         <div class="mb-3">
-                            <label class="form-label">Name</label>
-                            <input type="text" class="form-control" id="name" name="name">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="name">
                         </div>
                     </div>
                     {{-- @dd($pool) --}}
 
                     <div class="col-sm-2 col-md-2">
                         <div class="mb-3">
-                            <label class="form-label">Local Address</label>
                             <input type="text" list="pool_list" class="form-control" id="local" name="local"
-                                placeholder="Enter or select" autocomplete="new_name">
+                                 autocomplete="new_name" placeholder="local address">
                             <datalist id="pool_list">
                                 <!-- Opsi dari select dropdown -->
                                 @foreach ($pool as $data)
@@ -30,9 +28,8 @@
 
                     <div class="col-sm-2 col-md-2">
                         <div class="mb-3">
-                            <label class="form-label">Local Address</label>
                             <input type="text" list="pool_list" class="form-control" id="remote" name="remote"
-                                placeholder="Enter or select" autocomplete="new_name">
+                                 autocomplete="new_name" placeholder="remote address">
                             <datalist id="pool_list">
                                 <!-- Opsi dari select dropdown -->
                                 @foreach ($pool as $data)
@@ -43,7 +40,6 @@
                     </div>
                     <div class="col-sm-2 col-md-2">
                         <div class="mb-3">
-                            <label class="form-label">Parent Queue</label>
                             <select name="parentqq" id="parentqq" class="form-select">
                                 <option>none</option>
                                 @foreach ($parent as $data)
@@ -54,13 +50,12 @@
                     </div>
                     <div class="col-sm-2 col-md-2">
                         <div class="mb-3">
-                            <label class="form-label">Rite Limit (rx/tx)</label>
-                            <input type="text" class="form-control" id="ratelimit" name="ratelimit">
+                            <input type="text" class="form-control" id="ratelimit" name="ratelimit" placeholder="Rite Limit (rx/tx)">
                         </div>
                     </div>
-                    <div class="col-sm-2 col-md-2">
-                        <div style="padding: 10px;">
-                            <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                    <div class="card text-center">
+                        <div class="row row-cards">
+                            <button type="submit" class="btn btn-primary mt-0">New Secret</button>
                         </div>
                     </div>
                 </div>

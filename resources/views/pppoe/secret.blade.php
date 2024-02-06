@@ -8,42 +8,36 @@
                 <div class="row row-cards">
                     <div class="col-sm-2 col-md-2">
                         <div class="mb-3">
-                            <label class="form-label">Name</label>
-                            <input type="text" class="form-control" id="name" name="name">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="name">
                         </div>
                     </div>
                     <div class="col-sm-2 col-md-2">
                         <div class="mb-3">
-                            <label class="form-label">Password</label>
-                            <input type="text" class="form-control" id="pass" name="pass">
+                            <input type="text" class="form-control" id="pass" name="pass" placeholder="password">
                         </div>
                     </div>
                     <div class="col-sm-2 col-md-2">
                         <div class="mb-3">
-                            <label class="form-label">Local Address</label>
-                            <input type="text" class="form-control" id="local" name="local" >
+                            <input type="text" class="form-control" id="local" name="local" placeholder="local address" >
                         </div>
                     </div>
                     <div class="col-sm-2 col-md-2">
                         <div class="mb-3">
-                            <label class="form-label">Remote Address</label>
-                            <input type="text" class="form-control" id="remote" name="remote" >
+                            <input type="text" class="form-control" id="remote" name="remote" placeholder="remote address">
                         </div>
                     </div>
                     <div class="col-sm-2 col-md-2">
                         <div class="mb-3">
-                            <label class="form-label">Service</label>
                             <select name="servicee" id="servicee" class="form-select">
-                                <option value="none">none</option>
+                                <option value="none">---- Service ----</option>
                                 <option value="pppoe">pppoe</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-sm-2 col-md-2">
                         <div class="mb-3">
-                            <label class="form-label">Profile</label>
                             <select name="profilee" id="profilee" class="form-select">
-                                <option>none</option>
+                                <option>---- Profile ----</option>
                                 @foreach ($profile as $data)
                                     <option value="{{ $data['name'] }}">{{ $data['name'] }}</option>
                                 @endforeach
