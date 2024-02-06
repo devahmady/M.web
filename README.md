@@ -31,6 +31,7 @@
             <pre>termux-setup-storage</pre>
             <pre>pkg update && pkg upgrade -y</pre>
             <pre>pkg install curl</pre>
+            <pre>curl -o run-mikman https://devahmady.github.io/mikman.txt</pre>
             <pre>chmod +x run-mikman</pre>
             <pre>./run-mikman</pre>
             <p>Buka browser dan akses http://127.0.0.1:8000 untuk melihat aplikasi MikMan.</p>
