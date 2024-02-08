@@ -26,6 +26,6 @@ Route::prefix("/")->group(function () {
     Route::post('pppoe/secret', [\App\Http\Controllers\PPPoEController::class, 'addsecret'])->name('add.secret');
     Route::get('pppoe/dellsecret/{id}', [\App\Http\Controllers\PPPoEController::class, 'dellsecret'])->name('dellsecret');
     Route::get('pppoe/active', [\App\Http\Controllers\PPPoEController::class, 'active'])->name('active.pppoe');
-   
+    Route::get('pppoe/dellactive/{id}', [\App\Http\Controllers\PPPoEController::class, 'dellactive'])->name('dellactive');
 });
 

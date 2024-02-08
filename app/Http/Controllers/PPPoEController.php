@@ -91,5 +91,14 @@ class PPPoEController extends Controller
       return view('pppoe/active', $data);
     }
   }
+
+  public function dellactive($id)
+  {
+    if (Pppoe::dellactive($id)) {
+      return redirect()->route('active.pppoe');
+    } else {
+      return 'Gagal menghapus PPPoE active.';
+    }
+  }
 }
 error_reporting(0);

@@ -253,4 +253,23 @@ class Pppoe
         $API->disconnect();
         return $data;
     }
+
+    public static function dellactive($id)
+    {
+        $ip = session()->get('ip');
+        $user = session()->get('user');
+        $password = session()->get('password');
+        $API = new MikrotikApi();
+        $API->debug = false;
+
+        if ($API->connect($ip, $user, $password)) {
+            $API->comm('/ppp/active/remove', [
+                '.id' => $id,
+            ]);
+            $API->disconnect();
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
