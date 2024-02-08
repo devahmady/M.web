@@ -46,6 +46,7 @@
             <pre>cd mikman</pre>
             <pre>composer install</pre>
             <pre>cp .env.example .env</pre>
+            <pre>php artisa key:generate</pre>
             <pre>php artisan serve</pre>
             <p>Buka browser dan akses http://127.0.0.1:8000 untuk melihat aplikasi MikMan.</p>
         </ol>
