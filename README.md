@@ -36,6 +36,19 @@
             <pre>./run-mikman</pre>
             <p>Buka browser dan akses http://127.0.0.1:8000 untuk melihat aplikasi MikMan.</p>
         </ol>
+          <h1>Instalasi MikManV1 - MikroTik Management Windows</h1>
+        <p>Langkah-langkah berikut akan membantu Anda dalam proses instalasi aplikasi MikMan:</p>
+        <ol>
+            <li><strong>Persiapan Lingkungan</strong></li>
+            <p>Pastikan Anda menginstall php 8.x dan composer pada system anda.</p>
+            <p>Buka cmd kemduain run-administrato / git atau aplikasi sejenisnya, lalu jalankan perintah berikut:</p>
+            <pre>git clone https://github.com/devahmady/mikman.git</pre>
+            <pre>cd mikman</pre>
+            <pre>composer install</pre>
+            <pre>cp .env.example .env</pre>
+            <pre>php artisan serve</pre>
+            <p>Buka browser dan akses http://127.0.0.1:8000 untuk melihat aplikasi MikMan.</p>
+        </ol>
        <h2>Kesimpulan:</h2>
         <p>Integrasi API MikroTik kami dengan Laravel memberdayakan Anda untuk mengelola dan memonitor infrastruktur jaringan dengan efisien.</p>
     </div>
