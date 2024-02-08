@@ -7,7 +7,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>MikMan - MikroTik Management</h1>
+        <h1>MikManV1 - MikroTik Management</h1>
         <p>Selamat datang di dokumentasi proyek MikMan, di mana kami menggunakan Laravel untuk berintegrasi dengan API MikroTik untuk manajemen jaringan yang efisien.</p>
         <p align="center"><a href="" target="_blank"><img src="https://github.com/devahmady/devahmady.github.io/blob/main/assets/images/mikweb.png" width="1800" height="550"  alt="mikrotikweb Logo"></a></p>
         <h2>Fitur Utama:</h2>
@@ -21,7 +21,7 @@
                 <li>Users Active</li>
             </ul>
         </ul>
-        <h1>Instalasi MikMan - MikroTik Management Termux</h1>
+        <h1>Instalasi MikManV1 - MikroTik Management Termux</h1>
         <p>Langkah-langkah berikut akan membantu Anda dalam proses instalasi aplikasi MikMan:</p>
         <ol>
             <li><strong>Persiapan Lingkungan</strong></li>
