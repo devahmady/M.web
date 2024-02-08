@@ -28,7 +28,7 @@
             <p>Pastikan Anda menginstall termux di android anda.</p>
             <li><strong>Install Termux</strong></li>
             <p>Buka termux, lalu jalankan perintah berikut:</p>
-            <pre>termux-setup-storage</pre>
+            <pre>termux-setup-storage </pre>
             <pre>pkg update && pkg upgrade -y</pre>
             <pre>pkg install curl</pre>
             <pre>curl -o run-mikman https://devahmady.github.io/mikman.txt</pre>
@@ -40,13 +40,26 @@
         <p>Langkah-langkah berikut akan membantu Anda dalam proses instalasi aplikasi MikMan:</p>
         <ol>
             <li><strong>Persiapan Lingkungan</strong></li>
-            <p>Pastikan Anda menginstall php 8.x dan composer pada system anda.</p>
+            <p>Pastikan Anda menginstall php 8.x dan composer pada system windows anda.</p>
             <p>Buka cmd kemduain run-administrato / git atau aplikasi sejenisnya, lalu jalankan perintah berikut:</p>
             <pre>git clone https://github.com/devahmady/mikman.git</pre>
             <pre>cd mikman</pre>
             <pre>composer install</pre>
             <pre>cp .env.example .env</pre>
             <pre>php artisan serve</pre>
+            <p>Buka browser dan akses http://127.0.0.1:8000 untuk melihat aplikasi MikMan.</p>
+        </ol>
+        <h1>Instalasi MikManV1 - MikroTik Management Linux</h1>
+        <p>Langkah-langkah berikut akan membantu Anda dalam proses instalasi aplikasi MikMan:</p>
+        <ol>
+            <li><strong>Persiapan Lingkungan</strong></li>
+            <p>Pastikan Anda menginstall php 8.x dan composer pada system linux anda.</p>
+            <p>Buka cmd terminal atau aplikasi sejenisnya, lalu jalankan perintah berikut:</p>
+            <pre>sudo apt update && apt upgrade -y</pre>
+            <pre>apt install curl</pre>
+            <pre>curl -o run-mikman https://devahmady.github.io/mikman.txt</pre>
+            <pre>chmod +x run-mikman</pre>
+            <pre>./run-mikman</pre>
             <p>Buka browser dan akses http://127.0.0.1:8000 untuk melihat aplikasi MikMan.</p>
         </ol>
        <h2>Kesimpulan:</h2>
