@@ -57,7 +57,7 @@
             <p>Pastikan Anda menginstall php 8.x dan composer pada system linux anda.</p>
             <p>Buka cmd terminal atau aplikasi sejenisnya, lalu jalankan perintah berikut:</p>
             <pre>sudo apt update && apt upgrade -y</pre>
-            <pre>apt install curl</pre>
+            <pre>sudo apt install curl</pre>
             <pre>curl -o run-mikman https://devahmady.github.io/mikman.txt</pre>
             <pre>chmod +x run-mikman</pre>
             <pre>./run-mikman</pre>
