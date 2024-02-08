@@ -42,10 +42,23 @@ class DashboardController extends Controller
                 'interface' => 'ether1',
                 'once' => '',
             ));
-            $getlog = $API->comm("/log/print", array(
+            $logs = $API->comm("/log/print", array(
                 "?topics" => "hotspot,info,debug"
             ));
-            $logs = array_reverse($getlog);
+            foreach ($logs as &$log) {
+                // Memisahkan pesan log menjadi IP Address dan pesan
+                $messageParts = explode(':', $log['message'], 2);
+                if (count($messageParts) === 2) {
+                    $log['ipAddress'] = trim($messageParts[0]);
+                    $log['message'] = trim($messageParts[1]);
+                } else {
+                    $log['ipAddress'] = '';
+                    $log['message'] = $log['message'];
+                }
+            }
+            
+            // Membalikkan urutan log
+            $logs = array_reverse($logs);
             $rx = $monitoring[0]['rx-bits-per-second'];
             $tx = $monitoring[0]['tx-bits-per-second'];
         } else {
@@ -77,7 +90,7 @@ class DashboardController extends Controller
             "log" => $logs,
             "ipAddresses" => $ipAddresses,
         ];
-        // dd($pppactive);
+        // dd($getlog);
         return view('dashboard', $data);
     }
 

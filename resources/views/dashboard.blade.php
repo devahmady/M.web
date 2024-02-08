@@ -267,37 +267,26 @@
             <div class="card-body card-body-scrollable card-body-scrollable-shadow">
                 <div class="h5">
                     <div class="table-responsive">
-                        <table class="table card-table table-vcenter" style="width: 600px;">
-
+                        <table class="table card-table table-vcenter" style="width: 500px;">
                             <thead>
                                 <tr>
                                     <th>Time</th>
+                                    <th>User</th>
                                     <th>Info</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($log as $data)
-                                    @php
-                                        $time = $data['time'];
-                                        $message = $data['message'];
-                                        $ipAddress = '';
-                                        preg_match('/^a \((\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\):/', $message, $matches);
-                                        if (!empty($matches)) {
-                                            $ipAddress = $matches[1];
-                                        }
-                                    @endphp
-
-                                    @if (!empty($ipAddress))
-                                        <tr>
-                                            <td>{{ $time }}</td>
-                                            <td>{{ $message }}</td>
-                                        </tr>
-                                    @endif
+                                    <tr>
+                                        <td>{{ $data['time'] }}</td>
+                                        <td>{{ $data['ipAddress'] }}</td>
+                                        <td>{{ $data['message'] }}</td>
+                                    </tr>
                                 @endforeach
-
-
                             </tbody>
                         </table>
+                        
+                        
                     </div>
                 </div>
             </div>
